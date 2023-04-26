@@ -27,5 +27,20 @@ namespace TradeBotDashboard
             process.StartInfo.Arguments = $"/c \"{batchFilePath}\"";
             process.Start();
         }
+
+        private void Button_StopTrading_Click(object sender, EventArgs e)
+        {
+            // Find the Python process and kill it
+            Process[] runningProcesses = Process.GetProcessesByName("python");
+            foreach (Process process in runningProcesses)
+            {
+                process.Kill();
+            }
+        }
+
+        private void Button_LoadDefault_Click(object sender, EventArgs e)
+        {
+            TextBox_TrainingDataRequest.Text ="5";
+        }
     }
 }
