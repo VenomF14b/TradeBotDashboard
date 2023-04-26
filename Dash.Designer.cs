@@ -84,9 +84,9 @@ namespace TradeBotDashboard
             // 
             this.Button_StartTrading.AutoSize = true;
             this.Button_StartTrading.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Button_StartTrading.Location = new System.Drawing.Point(870, 408);
+            this.Button_StartTrading.Location = new System.Drawing.Point(870, 364);
             this.Button_StartTrading.Name = "Button_StartTrading";
-            this.Button_StartTrading.Size = new System.Drawing.Size(86, 23);
+            this.Button_StartTrading.Size = new System.Drawing.Size(86, 67);
             this.Button_StartTrading.TabIndex = 0;
             this.Button_StartTrading.Text = "Start Trading";
             this.Button_StartTrading.UseVisualStyleBackColor = true;
@@ -507,9 +507,9 @@ namespace TradeBotDashboard
             // 
             this.Button_StopTrading.AutoSize = true;
             this.Button_StopTrading.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Button_StopTrading.Location = new System.Drawing.Point(753, 408);
+            this.Button_StopTrading.Location = new System.Drawing.Point(753, 364);
             this.Button_StopTrading.Name = "Button_StopTrading";
-            this.Button_StopTrading.Size = new System.Drawing.Size(86, 23);
+            this.Button_StopTrading.Size = new System.Drawing.Size(86, 67);
             this.Button_StopTrading.TabIndex = 8;
             this.Button_StopTrading.Text = "Stop Trading";
             this.Button_StopTrading.UseVisualStyleBackColor = true;
