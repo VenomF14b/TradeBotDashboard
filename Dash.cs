@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.IO;
 
 namespace TradeBotDashboard
 {
@@ -59,6 +60,43 @@ namespace TradeBotDashboard
             TextBox_SellStopLoss.Text = "0.0001";
             TextBox_SellTakeProfit.Text = "0.0001";
             TextBox_SellIdentity.Text = "123456";
+        }
+
+        private void Button_SaveConfiguration_Click(object sender, EventArgs e)
+        {
+            string filename = "test.ini";
+            using (StreamWriter writer = new StreamWriter(filename))
+            {
+                writer.WriteLine("[Training Parameters]");
+                writer.WriteLine("passedtime = " + TextBox_TrainingDataRequest.Text);
+                writer.WriteLine("trainerairowselector = " + TextBox_TrainingDataSelect.Text);
+                writer.WriteLine("traineraiepochs = " + TextBox_TrainingEpochs.Text);
+                writer.WriteLine("traineraibatchsize = " + TextBox_TrainingBatchSize.Text);
+                writer.WriteLine("runtime = " + TextBox_RunningRuntime.Text);
+            }
+
+            string filename1 = "test2.ini";
+            using (StreamWriter writer = new StreamWriter(filename1))
+            {
+                writer.WriteLine("[Constantai Parameters]");
+                writer.WriteLine("passedtimeconstantai = " + TextBox_RunningDataRequest.Text);
+                writer.WriteLine("passedtimewldataconstantai = " + TextBox_RunningWinLossDataRequest.Text);
+                writer.WriteLine("constantairowselector = " + TextBox_RunningDataSelect.Text);
+                writer.WriteLine("wldatarowselector = " + TextBox_RunningWinLossDataSelect.Text);
+                writer.WriteLine("constantaitrainsplit = " + TextBox_RunningDataSplit.Text);
+                writer.WriteLine("constantaiepochs = " + TextBox_RunningEpochs.Text);
+                writer.WriteLine("constantaibatchsize = " + TextBox_RunningBatchSize.Text);
+                writer.WriteLine("buyvolume = " + TextBox_BuyVolume.Text);
+                writer.WriteLine("buystoploss = " + TextBox_BuyStopLoss.Text);
+                writer.WriteLine("buytakeprofit = " + TextBox_BuyTakeProfit.Text);
+                writer.WriteLine("buymagic = " + TextBox_BuyIdentity.Text);
+                writer.WriteLine("sellvolume = " + TextBox_SellVolume.Text);
+                writer.WriteLine("sellstoploss = " + TextBox_SellStopLoss.Text);
+                writer.WriteLine("selltakeprofit = " + TextBox_SellTakeProfit.Text);
+                writer.WriteLine("sellmagic = " + TextBox_SellIdentity.Text);
+            }
+
+            MessageBox.Show("Parameters updated.");
         }
     }
 }

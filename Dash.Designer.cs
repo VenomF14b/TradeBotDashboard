@@ -74,9 +74,12 @@ namespace TradeBotDashboard
             this.Label_SellIdentity = new System.Windows.Forms.Label();
             this.TextBox_SellIdentity = new System.Windows.Forms.TextBox();
             this.Panel_UI = new System.Windows.Forms.Panel();
-            this.Button_StopTrading = new System.Windows.Forms.Button();
-            this.Label_RunningRuntime = new System.Windows.Forms.Label();
             this.TextBox_RunningRuntime = new System.Windows.Forms.TextBox();
+            this.Label_RunningRuntime = new System.Windows.Forms.Label();
+            this.Button_StopTrading = new System.Windows.Forms.Button();
+            this.Button_TrainModel = new System.Windows.Forms.Button();
+            this.Label_TrainingDataSplit = new System.Windows.Forms.Label();
+            this.TextBox_TrainingDataSplit = new System.Windows.Forms.TextBox();
             this.Panel_UI.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -102,6 +105,7 @@ namespace TradeBotDashboard
             this.Button_SaveConfiguration.TabIndex = 1;
             this.Button_SaveConfiguration.Text = "Save Configuration";
             this.Button_SaveConfiguration.UseVisualStyleBackColor = true;
+            this.Button_SaveConfiguration.Click += new System.EventHandler(this.Button_SaveConfiguration_Click);
             // 
             // Button_LoadDefault
             // 
@@ -170,7 +174,7 @@ namespace TradeBotDashboard
             // Label_TrainingEpochs
             // 
             this.Label_TrainingEpochs.AutoSize = true;
-            this.Label_TrainingEpochs.Location = new System.Drawing.Point(16, 93);
+            this.Label_TrainingEpochs.Location = new System.Drawing.Point(16, 120);
             this.Label_TrainingEpochs.Name = "Label_TrainingEpochs";
             this.Label_TrainingEpochs.Size = new System.Drawing.Size(86, 13);
             this.Label_TrainingEpochs.TabIndex = 5;
@@ -178,7 +182,7 @@ namespace TradeBotDashboard
             // 
             // TextBox_TrainingEpochs
             // 
-            this.TextBox_TrainingEpochs.Location = new System.Drawing.Point(181, 90);
+            this.TextBox_TrainingEpochs.Location = new System.Drawing.Point(181, 117);
             this.TextBox_TrainingEpochs.Name = "TextBox_TrainingEpochs";
             this.TextBox_TrainingEpochs.Size = new System.Drawing.Size(45, 20);
             this.TextBox_TrainingEpochs.TabIndex = 6;
@@ -186,7 +190,7 @@ namespace TradeBotDashboard
             // Label_TrainingBatchSize
             // 
             this.Label_TrainingBatchSize.AutoSize = true;
-            this.Label_TrainingBatchSize.Location = new System.Drawing.Point(16, 119);
+            this.Label_TrainingBatchSize.Location = new System.Drawing.Point(16, 146);
             this.Label_TrainingBatchSize.Name = "Label_TrainingBatchSize";
             this.Label_TrainingBatchSize.Size = new System.Drawing.Size(99, 13);
             this.Label_TrainingBatchSize.TabIndex = 5;
@@ -194,7 +198,7 @@ namespace TradeBotDashboard
             // 
             // TextBox_TrainingBatchSize
             // 
-            this.TextBox_TrainingBatchSize.Location = new System.Drawing.Point(181, 116);
+            this.TextBox_TrainingBatchSize.Location = new System.Drawing.Point(181, 143);
             this.TextBox_TrainingBatchSize.Name = "TextBox_TrainingBatchSize";
             this.TextBox_TrainingBatchSize.Size = new System.Drawing.Size(45, 20);
             this.TextBox_TrainingBatchSize.TabIndex = 6;
@@ -470,6 +474,7 @@ namespace TradeBotDashboard
             this.Panel_UI.Controls.Add(this.Label_TradeConditions);
             this.Panel_UI.Controls.Add(this.Label_RunningDataSplit);
             this.Panel_UI.Controls.Add(this.TextBox_TrainingDataRequest);
+            this.Panel_UI.Controls.Add(this.TextBox_TrainingDataSplit);
             this.Panel_UI.Controls.Add(this.TextBox_TrainingBatchSize);
             this.Panel_UI.Controls.Add(this.Label_RunningDataRequest);
             this.Panel_UI.Controls.Add(this.Label_SellIdentity);
@@ -477,6 +482,7 @@ namespace TradeBotDashboard
             this.Panel_UI.Controls.Add(this.Label_BuyIdentity);
             this.Panel_UI.Controls.Add(this.Label_BuyVolume);
             this.Panel_UI.Controls.Add(this.Label_RunningWinLossDataSelect);
+            this.Panel_UI.Controls.Add(this.Label_TrainingDataSplit);
             this.Panel_UI.Controls.Add(this.Label_TrainingDataSelect);
             this.Panel_UI.Controls.Add(this.Label_TrainingBatchSize);
             this.Panel_UI.Controls.Add(this.Label_SellVolume);
@@ -503,6 +509,22 @@ namespace TradeBotDashboard
             this.Panel_UI.Size = new System.Drawing.Size(1002, 290);
             this.Panel_UI.TabIndex = 7;
             // 
+            // TextBox_RunningRuntime
+            // 
+            this.TextBox_RunningRuntime.Location = new System.Drawing.Point(498, 221);
+            this.TextBox_RunningRuntime.Name = "TextBox_RunningRuntime";
+            this.TextBox_RunningRuntime.Size = new System.Drawing.Size(60, 20);
+            this.TextBox_RunningRuntime.TabIndex = 6;
+            // 
+            // Label_RunningRuntime
+            // 
+            this.Label_RunningRuntime.AutoSize = true;
+            this.Label_RunningRuntime.Location = new System.Drawing.Point(333, 224);
+            this.Label_RunningRuntime.Name = "Label_RunningRuntime";
+            this.Label_RunningRuntime.Size = new System.Drawing.Size(92, 13);
+            this.Label_RunningRuntime.TabIndex = 5;
+            this.Label_RunningRuntime.Text = "Running Runtime:";
+            // 
             // Button_StopTrading
             // 
             this.Button_StopTrading.AutoSize = true;
@@ -515,27 +537,39 @@ namespace TradeBotDashboard
             this.Button_StopTrading.UseVisualStyleBackColor = true;
             this.Button_StopTrading.Click += new System.EventHandler(this.Button_StopTrading_Click);
             // 
-            // Label_RunningRuntime
+            // Button_TrainModel
             // 
-            this.Label_RunningRuntime.AutoSize = true;
-            this.Label_RunningRuntime.Location = new System.Drawing.Point(333, 224);
-            this.Label_RunningRuntime.Name = "Label_RunningRuntime";
-            this.Label_RunningRuntime.Size = new System.Drawing.Size(92, 13);
-            this.Label_RunningRuntime.TabIndex = 5;
-            this.Label_RunningRuntime.Text = "Running Runtime:";
+            this.Button_TrainModel.AutoSize = true;
+            this.Button_TrainModel.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Button_TrainModel.Location = new System.Drawing.Point(234, 364);
+            this.Button_TrainModel.Name = "Button_TrainModel";
+            this.Button_TrainModel.Size = new System.Drawing.Size(86, 67);
+            this.Button_TrainModel.TabIndex = 9;
+            this.Button_TrainModel.Text = "Train Model";
+            this.Button_TrainModel.UseVisualStyleBackColor = true;
             // 
-            // TextBox_RunningRuntime
+            // Label_TrainingDataSplit
             // 
-            this.TextBox_RunningRuntime.Location = new System.Drawing.Point(498, 221);
-            this.TextBox_RunningRuntime.Name = "TextBox_RunningRuntime";
-            this.TextBox_RunningRuntime.Size = new System.Drawing.Size(60, 20);
-            this.TextBox_RunningRuntime.TabIndex = 6;
+            this.Label_TrainingDataSplit.AutoSize = true;
+            this.Label_TrainingDataSplit.Location = new System.Drawing.Point(16, 94);
+            this.Label_TrainingDataSplit.Name = "Label_TrainingDataSplit";
+            this.Label_TrainingDataSplit.Size = new System.Drawing.Size(93, 13);
+            this.Label_TrainingDataSplit.TabIndex = 5;
+            this.Label_TrainingDataSplit.Text = "Training data split:";
+            // 
+            // TextBox_TrainingDataSplit
+            // 
+            this.TextBox_TrainingDataSplit.Location = new System.Drawing.Point(181, 91);
+            this.TextBox_TrainingDataSplit.Name = "TextBox_TrainingDataSplit";
+            this.TextBox_TrainingDataSplit.Size = new System.Drawing.Size(45, 20);
+            this.TextBox_TrainingDataSplit.TabIndex = 6;
             // 
             // Dash
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1002, 512);
+            this.Controls.Add(this.Button_TrainModel);
             this.Controls.Add(this.Button_StopTrading);
             this.Controls.Add(this.Button_StartTrading);
             this.Controls.Add(this.Panel_UI);
@@ -600,6 +634,9 @@ namespace TradeBotDashboard
         private System.Windows.Forms.Button Button_StopTrading;
         private System.Windows.Forms.TextBox TextBox_RunningRuntime;
         private System.Windows.Forms.Label Label_RunningRuntime;
+        private System.Windows.Forms.Button Button_TrainModel;
+        private System.Windows.Forms.TextBox TextBox_TrainingDataSplit;
+        private System.Windows.Forms.Label Label_TrainingDataSplit;
     }
 }
 
